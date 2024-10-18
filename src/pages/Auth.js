@@ -13,7 +13,7 @@ const Auth = () => {
  const params = new URLSearchParams(window.Telegram.WebApp.initData);
 
  // Получаем данные из параметра 'user' и декодируем
- const userString = decodeURIComponent(params.get('user'));
+ const userString = decodeURIComponent(params.get());
 
  // Преобразуем строку user в объект JSON
  const userObject = JSON.parse(userString);

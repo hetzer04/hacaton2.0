@@ -1,7 +1,7 @@
 // src/api.js
 import axios from "axios";
 
-const API_URL = "http://your-api-url.com/api"; // Замените на ваш API
+const API_URL = "https://674b-46-42-238-182.ngrok-free.app/api/telegram"; // Замените на ваш API
 
 export const getCourses = async () => {
     return await axios.get(`${API_URL}/courses`);
@@ -17,4 +17,8 @@ export const getLessonsByCourseId = async (id) => {
 
 export const getAssignmentsByLessonId = async (lessonId) => {
     return await axios.get(`${API_URL}/lessons/${lessonId}/assignments`);
+};
+
+export const getAuth = async (hash) => {
+    return await axios.post(`${API_URL}/auth`, {hash: hash});
 };

@@ -10,10 +10,10 @@ const Auth = () => {
   const [Data, setData] = useState();
 
  // Создаем объект URLSearchParams
- const params = new URLSearchParams(window.Telegram.WebApp.initData);
+ const params = new URLSearchParams(window.Telegram.WebApp);
 
  // Получаем данные из параметра 'user' и декодируем
- const userString = decodeURIComponent(params);
+ const userString = decodeURIComponent(params.get("initData"));
 
  // Преобразуем строку user в объект JSON
  const userObject = JSON.parse(userString);
@@ -34,7 +34,6 @@ const Auth = () => {
   return (
     <div className="flex justify-center align-middle h-screen w-40" style={{wordWrap: "break-word"}}>
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
-      {userString}
     </div>
   );
 };

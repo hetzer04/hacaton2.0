@@ -18,7 +18,7 @@ const Auth = () => {
     const params = new URLSearchParams(window.Telegram.WebApp.initData);
 
     // Получаем данные из параметра 'user'
-    let userString = params.get("user");
+    let userString = params.get('user');
 
     if (userString) {
       try {

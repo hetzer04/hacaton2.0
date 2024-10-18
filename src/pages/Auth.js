@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
 import { getAuth } from "../api";
 import axios from "axios";
+import { json } from "react-router-dom";
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -20,12 +21,12 @@ const Auth = () => {
         .post("https://674b-46-42-238-182.ngrok-free.app/api/telegram/auth", { initData })
         .then((response) => {
           console.log("Аутентификация успешна:", response.data);
-          setData(response.data)
+          setData(response)
           setIsLogin(true)
         })
         .catch((error) => {
           console.error("Ошибка аутентификации:", error);
-          setData(error?.message)
+          setData(error)
         });
     }
   }, []);
@@ -36,7 +37,7 @@ const Auth = () => {
       style={{ wordWrap: "break-word" }}
     >
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
-      {Data}
+      {JSON.stringify(Data)}
     </div>
   );
 };

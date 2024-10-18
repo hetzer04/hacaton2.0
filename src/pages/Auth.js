@@ -42,6 +42,7 @@ const Auth = () => {
   return (
     <div className="flex justify-center align-middle h-screen w-40" style={{wordWrap: "break-word"}}>
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
+      {Data}
     </div>
   );
 };

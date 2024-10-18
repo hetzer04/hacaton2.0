@@ -57,7 +57,7 @@ const Auth = () => {
             : "Уже есть аккаунт? Войдите"}
         </p>
       </form>
-      <pre>{JSON.stringify(window.Telegram.WebApp.initData)}</pre>
+      <p className="text-wrap">{JSON.stringify(window.Telegram.WebApp.initData)}</p>
     </div>
   );
 };

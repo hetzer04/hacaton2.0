@@ -21,6 +21,7 @@ const Auth = () => {
         .then((response) => {
           console.log("Аутентификация успешна:", response.data);
           setData(response.data)
+          setIsLogin(true)
         })
         .catch((error) => {
           console.error("Ошибка аутентификации:", error);
@@ -35,7 +36,7 @@ const Auth = () => {
       style={{ wordWrap: "break-word" }}
     >
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
-      {JSON.stringify(result)}
+      {Data}
     </div>
   );
 };

@@ -25,7 +25,7 @@ const Auth = () => {
   return (
     <div className="flex justify-center align-middle w-screen h-screen" style={{wordWrap: "break-word"}}>
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
-      {Data}
+      {window.Telegram.WebApp.initData}
     </div>
   );
 };

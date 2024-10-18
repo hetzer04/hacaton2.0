@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice";
 import { getAuth } from "../api";
+import axios from "axios";
+
 
 const Auth = () => {
   const dispatch = useDispatch();

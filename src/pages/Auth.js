@@ -24,7 +24,7 @@ const Auth = () => {
         })
         .catch((error) => {
           console.error("Ошибка аутентификации:", error);
-          setData(error.message)
+          setData(error?.message)
         });
     }
   }, []);

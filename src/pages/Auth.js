@@ -7,6 +7,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(false);
   const [Data, setData] = useState(null);
+  let result
 
   useEffect(() => {
     window.Telegram.WebApp.ready(); // Убедись, что WebApp API готов
@@ -26,7 +27,7 @@ const Auth = () => {
         const userObject = JSON.parse(userString);
 
         // Создаем объект с данными
-        const result = {
+        result = {
           ...userObject,
           chat_instance: params.get("chat_instance"),
           chat_type: params.get("chat_type"),
@@ -66,6 +67,7 @@ const Auth = () => {
         {isLogin ? <p>Привет!</p> : <p>Авторизация</p>}
       </div>
       <div>{Data ? JSON.stringify(Data) : "Загрузка..."}</div>
+      <div>{result ? JSON.stringify(result) : "Загрузка..."}</div>
     </>
   );
 };

@@ -5,8 +5,6 @@ import { login } from "../store/authSlice";
 import { getAuth } from "../api";
 import axios from "axios";
 import { json } from "react-router-dom";
-
-import React, { useEffect } from "react";
 import axios from "axios";
 
 const Auth = () => {

@@ -17,7 +17,7 @@ const Auth = () => {
     if (initData) {
       // Отправляем данные на бэкенд
       axios
-        .post("https://your-domain.com/api/telegram/auth", { initData })
+        .post("https://674b-46-42-238-182.ngrok-free.app/api/telegram/auth", { initData })
         .then((response) => {
           console.log("Аутентификация успешна:", response.data);
           setData(response.data)

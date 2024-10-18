@@ -8,6 +8,9 @@ const Home = () => {
                 Добро пожаловать в образовательный телеграм апп!
             </h2>
             <p className="text-lg">Выберите курс, чтобы начать обучение.</p>
+            {
+                window.Telegram.WebApp.initData
+            }
         </div>
     );
 };

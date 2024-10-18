@@ -10,17 +10,25 @@ const Auth = () => {
   const [Data, setData] = useState();
 
  // Создаем объект URLSearchParams
- const params = new URLSearchParams(window.Telegram.WebApp);
+ const params = new URLSearchParams(window.Telegram.WebApp.initData);
 
  // Получаем данные из параметра 'user' и декодируем
- const userString = decodeURIComponent(params.get("initData"));
+ const userString = decodeURIComponent(params.get("user"));
 
  // Преобразуем строку user в объект JSON
  const userObject = JSON.parse(userString);
 
+ const result = {
+    ...userObject,
+    chat_instance: params.get('chat_instance'),
+    chat_type: params.get('chat_type'),
+    auth_date: params.get('auth_date'),
+    hash: params.get('hash')
+};
+
   useEffect(() => {
     const fetchCourses = async () => {
-      const response = await getAuth(userObject)
+      const response = await getAuth(result)
       .then((data) => {
         setData(data);
         setIsLogin(true);

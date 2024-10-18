@@ -37,7 +37,7 @@ const Auth = () => {
       style={{ wordWrap: "break-word" }}
     >
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
-      {JSON.stringify(Data)}
+      {JSON.stringify(initData)}
     </div>
   );
 };

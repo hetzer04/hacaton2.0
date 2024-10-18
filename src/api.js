@@ -19,6 +19,6 @@ export const getAssignmentsByLessonId = async (lessonId) => {
     return await axios.get(`${API_URL}/lessons/${lessonId}/assignments`);
 };
 
-export const getAuth = async (hash) => {
-    return await axios.post(`${API_URL}/auth`, {hash: hash});
+export const getAuth = async (data) => {
+    return await axios.post(`${API_URL}/auth`, {data});
 };

@@ -15,7 +15,9 @@ const Auth = () => {
       .then((data) => {
         setData(data);
         setIsLogin(true);
-      });
+      })
+      .catch((error)=>{setData(error)})
+      
     };
     fetchCourses();
   }, []);

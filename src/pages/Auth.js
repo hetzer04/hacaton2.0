@@ -8,42 +8,34 @@ const Auth = () => {
   const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(false);
   const [Data, setData] = useState();
+  const initData = window.Telegram.WebApp.initData; // Получаем данные из Telegram
 
- // Создаем объект URLSearchParams
- const params = new URLSearchParams(window.Telegram.WebApp.initData);
-
- // Получаем данные из параметра 'user' и декодируем
- const userString = decodeURIComponent(params.get('user'));
-
- // Преобразуем строку user в объект JSON
- const userObject = JSON.parse(userString);
-
- // Собираем остальные параметры
- const result = {
-  ...userObject,
-  chat_instance: params.get('chat_instance'),
-  chat_type: params.get('chat_type'),
-  auth_date: params.get('auth_date'),
-  hash: params.get('hash')
-};
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      const response = await getAuth(result)
-      .then((data) => {
-        setData(data);
-        setIsLogin(true);
-      })
-      .catch((error)=>{setData(error)})
-      
-    };
-    fetchCourses();
-  }, []);
+  // Проверка на наличие данных
+  useEffect(()=>{
+    async function Fetch(){
+      if (initData) {
+        // Отправляем данные на бэкенд
+        await axios
+          .post("https://674b-46-42-238-182.ngrok-free.app/api/telegram/auth", { initData })
+          .then((response) => {
+            console.log("Аутентификация успешна:", response.data);
+            setData(response.data)
+          })
+          .catch((error) => {
+            console.error("Ошибка аутентификации:", error);
+          });
+      }
+    }
+    Fetch()
+  },[])
 
   return (
-    <div className="flex justify-center align-middle h-screen w-40" style={{wordWrap: "break-word"}}>
+    <div
+      className="flex justify-center align-middle h-screen w-40"
+      style={{ wordWrap: "break-word" }}
+    >
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
-      {JSON.stringify(result)}
+      {JSON.stringify(Data)}
     </div>
   );
 };

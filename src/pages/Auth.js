@@ -11,7 +11,8 @@ const Auth = () => {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const response = await getAuth(window.Telegram.WebApp.initData).then((data) => {
+      const response = await getAuth(window.Telegram.WebApp.initData)
+      .then((data) => {
         setData(data);
         setIsLogin(true);
       });
@@ -20,8 +21,9 @@ const Auth = () => {
   }, []);
 
   return (
-    <div className="flex justify-center align-middle w-screen h-screen">
+    <div className="flex justify-center align-middle w-screen h-screen" style={{wordWrap: "break-word"}}>
       {isLogin ? <p>Hellp</p> : <p>Авторизация</p>}
+      {Data}
     </div>
   );
 };

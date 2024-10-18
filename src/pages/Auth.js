@@ -67,7 +67,7 @@ const Auth = () => {
         {isLogin ? <p>Привет!</p> : <p>Авторизация</p>}
       </div>
       <div>{Data ? JSON.stringify(Data) : "Загрузка..."}</div>
-      <div>{result ? JSON.stringify(result) : "Загрузка..."}</div>
+      <div>{JSON.stringify(result)}</div>
     </>
   );
 };

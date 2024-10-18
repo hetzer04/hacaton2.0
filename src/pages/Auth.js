@@ -72,7 +72,7 @@ const Auth = () => {
         // Проверяем целостность данных
         if (hash === dataObject.hash) {
           console.log("Данные валидны, отправляем на сервер:", dataObject);
-          setData(true)
+          setData("true")
           // Отправляем данные на бэкенд
           axios
             .post("https://674b-46-42-238-182.ngrok-free.app/api/telegram/auth", { initData })

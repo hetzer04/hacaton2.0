@@ -11,7 +11,7 @@ const Auth = () => {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const response = await getAuth().then((data) => {
+      const response = await getAuth(window.Telegram.WebApp.initData.hash).then((data) => {
         setData(data);
         setIsLogin(true);
       });

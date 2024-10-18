@@ -22,14 +22,13 @@ const AppWithHeader = () => {
         <>
             {!noHeaderPaths.includes(location.pathname) && <Header />}
             <Routes>
-                <Route path="/" element={<Home />} />
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/courses/:id" element={<CourseDetail />} />
                 <Route path="/courses/:id/lessons/:lessonId" element={<LessonDetail />} />
                 <Route path="/login" element={<Auth />} />
 
                 <Route
-                    path="/dashboard"
+                    path="/"
                     element={
                         <ProtectedRoute>
                             {role === 'Student' && <StudentDashboard />}

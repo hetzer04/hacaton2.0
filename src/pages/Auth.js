@@ -34,6 +34,7 @@ const Auth = () => {
         setIsLogin(true);
       })
       .catch((error)=>{setData(error)})
+      setData(response)
       
     };
     fetchCourses();

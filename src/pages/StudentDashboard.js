@@ -12,7 +12,10 @@ const Dashboard = () => {
         if (user) {
             // Выполните запрос на получение данных о коинов
             fetch(
-                `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`
+                `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`, {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" }
+                }
             )
                 .then((response) => {
                     if (!response.ok) {
@@ -37,12 +40,9 @@ const Dashboard = () => {
         }
     }, [user, dispatch]);
 
-    useEffect(() => {
-        // Выполните запрос на получение данных о коинов
-        fetch(
-            `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`
-        );
-    }, []);
+    fetch(
+        `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`
+    );
 
     return (
         <div>

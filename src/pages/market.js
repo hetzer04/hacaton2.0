@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useTelegramTheme } from "../hooks/useTelegramTheme";
+
 
 const Market = () => {
+
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -38,8 +41,13 @@ const Market = () => {
 };
 
 const ProductCard = ({ product }) => {
+    const themeParams = useTelegramTheme();
+
     return (
-        <div className="shadow-lg rounded-lg overflow-hidden w-72">
+        <div className="shadow-lg rounded-lg overflow-hidden w-72" 
+        style={{
+            backgroundColor: themeParams.secondary_bg_color,
+        }}>
             {/* Картинка товара */}
             <img
                 src={product.image}

@@ -39,7 +39,6 @@ const Dashboard = () => {
 
     return (
         <div className="p-5 flex flex-col justify-center gap-5">
-            <h1 className="text-xl">Дашборд</h1>
             {user && (
                 <div>
                     <h2 className="text-2xl">

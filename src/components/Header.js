@@ -26,9 +26,9 @@ const Header = () => {
                         </Link>
                     </nav>
                 </>
-            ) : (
-                role ===
-                "admin"(
+            )  : null}
+            {
+                role === "admin" ?(
                     <>
                         <h1 className="text-3xl">
                             Образовательный Телеграм Апп
@@ -51,8 +51,8 @@ const Header = () => {
                             </Link>
                         </nav>
                     </>
-                )
-            )}
+                ) : null
+            }
         </header>
     );
 };

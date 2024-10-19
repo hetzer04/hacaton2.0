@@ -43,7 +43,7 @@ const ProductCard = ({ product }) => {
     );
 };
 
-const ProductsPage = () => {
+const Market = () => {
     return (
         <div className="p-6">
             <h2 className="text-3xl font-bold mb-6">Products</h2>
@@ -56,4 +56,4 @@ const ProductsPage = () => {
     );
 };
 
-export default ProductsPage;
+export default Market;

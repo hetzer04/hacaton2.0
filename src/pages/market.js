@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
             <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-contain"
             />
             {/* Описание товара */}
             <div className="p-4">

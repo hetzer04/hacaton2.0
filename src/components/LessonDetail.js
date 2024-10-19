@@ -8,7 +8,7 @@ import axios from "axios"; // Import axios for making HTTP requests
 const LessonDetail = () => {
     const { lessonId, courseId } = useParams(); // Assuming courseId is part of the URL
     const [assignments, setAssignments] = useState([]);
-    const telegramId = useSelector((state) => state.user.telegram_id); // Get telegram_id from redux state
+    const user = useSelector((state) => state.auth.user); // Get telegram_id from redux state
     const navigate = useNavigate(); // Use useNavigate for redirection
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const LessonDetail = () => {
             await axios.post(
                 "https://54cc-95-141-140-117.ngrok-free.app/api/coins",
                 {
-                    telegram_id: telegramId,
+                    telegram_id: user.telegramId,
                     value: 2,
                 }
             );

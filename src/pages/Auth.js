@@ -47,7 +47,7 @@ const Auth = () => {
                         navigate("/teacher-dashboard");
                     } else if (data.role === "Admin") {
                         navigate("/admin-dashboard");
-                    }
+                    } 
                 } else {
                     setIsLogin(false);
                     setError("Не удалось авторизоваться!");
@@ -77,6 +77,7 @@ const Auth = () => {
                 ) : null}
             </div>
             <div className="text-4xl text-red-500 p-5">{error}</div>
+            <div>{window.Telegram.WebApp}</div>
         </div>
     );
 };

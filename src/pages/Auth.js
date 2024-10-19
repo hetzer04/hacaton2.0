@@ -1,15 +1,9 @@
 // src/pages/Auth.js
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../store/authSlice";
-import { getAuth } from "../api";
-import axios from "axios";
-import { json } from "react-router-dom";
 
 const Auth = () => {
-    const dispatch = useDispatch();
     const [isLogin, setIsLogin] = useState(false);
-    const [Data, setData] = useState();
+    const [error, setError] = useState();
 
     useEffect(() => {
         const tgApp = window.Telegram.WebApp;
@@ -25,7 +19,6 @@ const Auth = () => {
         }
         dataCheckString = dataCheckString.slice(0, -1);
         let dataUrl = [dataCheckString, hash];
-        let validation = window.document.getElementById("validation");
         // -> server
         fetch("https://9af1-95-141-140-117.ngrok-free.app/api/telegram/auth", {
             method: "POST",
@@ -35,33 +28,25 @@ const Auth = () => {
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
-                    setData(
-                        "User: " +
-                            tgApp.initDataUnsafe.user.username +
-                            ", is GOOD!"
-                    );
                     setIsLogin(true);
                 } else {
-                    setData(
-                        "User: " +
-                            tgApp.initDataUnsafe.user.username +
-                            ", is BAD!"
-                    );
                     setIsLogin(false);
                 }
             })
             .catch((e) => {
-                setData(e.message);
+                setError(e.message);
             });
     }, []);
 
     return (
         <div
-            className="flex justify-center align-middle h-screen w-40"
+            className="flex flex-col justify-center items-center h-screen w-screen p-5"
             style={{ wordWrap: "break-word" }}
         >
-            {isLogin ? <p>Авторизовался</p> : <p>Авторизация</p>}
-            {Data}
+            <div className="text-3xl p-5">
+                {isLogin ? <p>Вы успешно зашли!</p> : <p>Авторизация</p>}
+            </div>
+            <div className="text-4xl text-red-500 p-5">{error}</div>
         </div>
     );
 };

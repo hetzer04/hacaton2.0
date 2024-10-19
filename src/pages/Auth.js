@@ -37,15 +37,15 @@ const Auth = () => {
 
                     // Установим авторизационные данные в Redux (или другую систему состояния)
                     dispatch(
-                        setAuth({ isAuthenticated: true, role: data.role })
+                        setAuth({ isAuthenticated: true, role: data.user.role })
                     );
 
                     // Перенаправление в зависимости от роли
-                    if (data.role === "student") {
+                    if (data.user.role === "student") {
                         navigate("/student-dashboard");
-                    } else if (data.role === "teacher") {
+                    } else if (data.user.role === "teacher") {
                         navigate("/teacher-dashboard");
-                    } else if (data.role === "admin") {
+                    } else if (data.user.role === "admin") {
                         navigate("/admin-dashboard");
                     } else {
                         navigate("/student-dashboard");

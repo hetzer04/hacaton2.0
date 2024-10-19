@@ -51,7 +51,7 @@ const Auth = () => {
                 }
             })
             .catch((e) => {
-                console.log("Error: " + e.message);
+                setData(e.message);
             });
     }, []);
 

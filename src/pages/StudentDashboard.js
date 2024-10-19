@@ -11,10 +11,9 @@ const Dashboard = () => {
 
     useEffect(() => {
         // Выполните запрос на получение данных о коинов
-        axios
-            .get(
-                "https://54cc-95-141-140-117.ngrok-free.app/api/coins/6236536643",
+        fetch("https://54cc-95-141-140-117.ngrok-free.app/api/coins/6236536643",
                 {
+                    method: "GET",
                     headers: { "Content-Type": "application/json" },
                 }
             )

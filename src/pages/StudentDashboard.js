@@ -54,7 +54,7 @@ const Dashboard = () => {
                     </h2>
                     <p>
                         Ваш баланс коинов:{" "}
-                        {coins !== null ? coins : "Загрузка..."}
+                        {coins ? coins : "Загрузка..."}
                     </p>
                 </div>
             )}

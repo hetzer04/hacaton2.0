@@ -5,7 +5,7 @@ const initialState = {
     isAuthenticated: false,
     role: null,
     user: null,
-    coins: null, // Add coins property
+    coins: false, // Add coins property
 };
 
 const authSlice = createSlice({

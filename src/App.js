@@ -16,7 +16,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
 import { useTelegramTheme } from "./hooks/useTelegramTheme";
-import Market from "./pages/Market";
+import Market from "./pages/market.js";
 
 const AppWithHeader = () => {
     const themeParams = useTelegramTheme();

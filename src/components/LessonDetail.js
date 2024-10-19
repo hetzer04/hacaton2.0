@@ -25,8 +25,8 @@ const LessonDetail = () => {
             await axios.post(
                 "https://54cc-95-141-140-117.ngrok-free.app/api/coins",
                 {
-                    telegram_id: user.telegramId,
-                    value: 2,
+                    "telegram_id": user.telegramId,
+                    "value": 2,
                 }
             );
             alert("Coins awarded successfully!"); // Feedback message

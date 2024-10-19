@@ -47,7 +47,7 @@ const Dashboard = () => {
                     </h2>
                     <p className="text-xl">
                         Ваш баланс коинов:{" "}
-                        {coins ? coins : "Загрузка..."}
+                        {coins !== 0 ? coins : "Загрузка..."}
                     </p>
                 </div>
             )}

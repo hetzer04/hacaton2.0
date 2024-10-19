@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
             <div className="p-4">
                 <h3 className="text-xl font-semibold">{product.title}</h3>
                 <p className="mt-2">{product.description}</p>
-                <p className="text-lg font-bold mt-4">{product.price} ₽</p>
+                <p className="text-lg font-bold mt-4">{product.price} E</p>
             </div>
         </div>
     );

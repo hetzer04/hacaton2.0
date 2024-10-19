@@ -41,11 +41,11 @@ const Auth = () => {
                     );
 
                     // Перенаправление в зависимости от роли
-                    if (data.role === "Student") {
+                    if (data.role === "student") {
                         navigate("/student-dashboard");
-                    } else if (data.role === "Teacher") {
+                    } else if (data.role === "teacher") {
                         navigate("/teacher-dashboard");
-                    } else if (data.role === "Admin") {
+                    } else if (data.role === "admin") {
                         navigate("/admin-dashboard");
                     } else {
                         navigate("/student-dashboard");

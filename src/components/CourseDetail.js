@@ -1,7 +1,5 @@
-// src/components/CourseDetail.js
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getCourseById, getLessonsByCourseId } from "../api"; // Не забудьте реализовать API
 
 const CourseDetail = () => {
     const { id } = useParams();
@@ -9,13 +7,26 @@ const CourseDetail = () => {
     const [lessons, setLessons] = useState([]);
 
     useEffect(() => {
-        const fetchCourse = async () => {
-            const response = await getCourseById(id);
-            setCourse(response.data);
-            const lessonsResponse = await getLessonsByCourseId(id);
-            setLessons(lessonsResponse.data);
+        // Заглушка для курса
+        const mockCourse = {
+            id: id,
+            title: `Курс ${id}`,
+            description: `Это описание курса ${id}.`
         };
-        fetchCourse();
+
+        // Заглушка для уроков
+        const mockLessons = [
+            { id: 1, lesson_number: 1, title: "Введение в курс" },
+            { id: 2, lesson_number: 2, title: "Основы темы" },
+            { id: 3, lesson_number: 3, title: "Продвинутая тема" },
+        ];
+
+        // Имитация асинхронного запроса данных
+        setTimeout(() => {
+            setCourse(mockCourse);
+            setLessons(mockLessons);
+        }, 1000); // Задержка 1 секунда для имитации загрузки
+
     }, [id]);
 
     return (
@@ -32,7 +43,7 @@ const CourseDetail = () => {
                                     to={`/courses/${id}/lessons/${lesson.id}`}
                                     className="text-blue-500 hover:underline"
                                 >
-                                    {`Урок ${lesson.lesson_number}`}
+                                    {`Урок ${lesson.lesson_number}: ${lesson.title}`}
                                 </Link>
                             </li>
                         ))}

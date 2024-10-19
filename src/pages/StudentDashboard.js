@@ -11,10 +11,14 @@ const Dashboard = () => {
     useEffect(() => {
         if (user) {
             // Выполните запрос на получение данных о коинов
-            fetch(`https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`)
+            fetch(
+                `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`
+            )
                 .then((response) => {
                     if (!response.ok) {
-                        throw new Error("Ошибка сети, не удалось получить данные.");
+                        throw new Error(
+                            "Ошибка сети, не удалось получить данные."
+                        );
                     }
                     return response.json();
                 })
@@ -25,18 +29,33 @@ const Dashboard = () => {
                     }
                 })
                 .catch((error) => {
-                    console.error("Ошибка при получении данных о коинов:", error);
+                    console.error(
+                        "Ошибка при получении данных о коинов:",
+                        error
+                    );
                 });
         }
     }, [user, dispatch]);
+
+    useEffect(() => {
+        // Выполните запрос на получение данных о коинов
+        fetch(
+            `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`
+        );
+    }, []);
 
     return (
         <div>
             <h1>Дашборд</h1>
             {user && (
                 <div>
-                    <h2>Добро пожаловать, {user.first_name} {user.last_name}!</h2>
-                    <p>Ваш баланс коинов: {coins !== null ? coins : "Загрузка..."}</p>
+                    <h2>
+                        Добро пожаловать, {user.first_name} {user.last_name}!
+                    </h2>
+                    <p>
+                        Ваш баланс коинов:{" "}
+                        {coins !== null ? coins : "Загрузка..."}
+                    </p>
                 </div>
             )}
         </div>

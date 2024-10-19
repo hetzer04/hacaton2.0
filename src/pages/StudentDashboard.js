@@ -1,4 +1,3 @@
-// Dashboard.js (например)
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCoins } from "../store/authSlice"; // Импортируйте ваше действие setCoins
@@ -10,28 +9,32 @@ const Dashboard = () => {
     const coins = useSelector((state) => state.auth.coins); // Получите коин из Redux
 
     useEffect(() => {
-        // Выполните запрос на получение данных о коинов
-        fetch("https://54cc-95-141-140-117.ngrok-free.app/api/coins/6236536643",
-                {
-                    method: "GET",
+        // Проверяем, есть ли пользователь
+        if (user && user.telegram_id) {
+            const url = `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`;
+            console.log("Запрос на URL:", url); // Логируем URL запроса
+
+            // Выполните запрос на получение данных о коинов с использованием Axios
+            axios
+                .get(url, {
                     headers: { "Content-Type": "application/json" },
-                }
-            )
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Ошибка сети, не удалось получить данные.");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (data) {
-                    // Отправьте данные о коинов в Redux
-                    dispatch(setCoins(data.value)); // Сохраните значение коинов
-                }
-            })
-            .catch((error) => {
-                console.error("Ошибка при получении данных о коинов:", error);
-            });
+                })
+                .then((response) => {
+                    console.log("Ответ от сервера:", response.data); // Логируем ответ от сервера
+                    // Если данные получены, сохраняем их в Redux
+                    if (response.data) {
+                        dispatch(setCoins(response.data.value));
+                    }
+                })
+                .catch((error) => {
+                    console.error(
+                        "Ошибка при получении данных о коинов:",
+                        error
+                    );
+                });
+        } else {
+            console.log("Данные о пользователе отсутствуют.");
+        }
     }, [user, dispatch]);
 
     return (
@@ -44,8 +47,8 @@ const Dashboard = () => {
                         Ваш id {user.telegram_id}
                     </h2>
                     <p>
-                        Ваш баланс коинов: {coins}
-                        {/* ? coins : "Загрузка..." */}
+                        Ваш баланс коинов:{" "}
+                        {coins !== null ? coins : "Загрузка..."}
                     </p>
                 </div>
             )}

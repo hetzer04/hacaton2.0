@@ -13,7 +13,7 @@ const Dashboard = () => {
         // Выполните запрос на получение данных о коинов
         axios
             .get(
-                `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`,
+                "https://54cc-95-141-140-117.ngrok-free.app/api/coins/6236536643",
                 {
                     headers: { "Content-Type": "application/json" },
                 }

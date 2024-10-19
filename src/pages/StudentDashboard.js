@@ -40,10 +40,6 @@ const Dashboard = () => {
         }
     }, [user, dispatch]);
 
-    fetch(
-        `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`
-    );
-
     return (
         <div>
             <h1>Дашборд</h1>
@@ -51,6 +47,7 @@ const Dashboard = () => {
                 <div>
                     <h2>
                         Добро пожаловать, {user.first_name} {user.last_name}!
+                        Ваш id {user.telegram_id}
                     </h2>
                     <p>
                         Ваш баланс коинов:{" "}

@@ -33,7 +33,7 @@ const LessonDetail = () => {
             navigate(`/courses/${courseId}/lessons/${parseInt(lessonId) + 1}`); // Redirect to the next lesson
         } catch (error) {
             console.error("Error awarding coins:", error);
-            alert("Failed to award coins. Please try again."); // Error feedback
+            alert(`Failed to award coins. Please try again.  ${user.telegramId}`); // Error feedback
         }
     };
 

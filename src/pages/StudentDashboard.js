@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCoins } from "../store/authSlice"; // Импортируйте ваше действие setCoins
 import axios from "axios";
+import main from "../main.webp"
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const Dashboard = () => {
                     </p>
                 </div>
             )}
+            <img src={main}/>
         </div>
     );
 };

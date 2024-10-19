@@ -14,17 +14,27 @@ const Courses = () => {
             <h2 className="text-3xl mb-4">Курсы</h2>
             <ul>
                 {courses.map((course) => (
-                    <li key={course.id} className="mb-4">
-                        <Link
-                            to={`/courses/${course.id}`}
-                            className="text-blue-500 hover:underline text-xl"
+                    <Link
+                        to={`/courses/${course.id}`}
+                        className=" text-xl"
+                    >
+                        <li
+                            key={course.id}
+                            className="mb-4 border-2 border-indigo-600 rounded-lg p-3"
                         >
                             {course.title}
-                        </Link>
-                        <p className="pl-5 text-sm text-gray-800">Автор: {course.author}</p>
-                        <p className="pl-5 text-sm text-gray-800">Уровень: {course.level}</p>
-                        <p className="pl-5 text-sm text-gray-800">{course.description}</p>
-                    </li>
+
+                            <p className="pl-5 text-sm ">
+                                Автор: {course.author}
+                            </p>
+                            <p className="pl-5 text-sm ">
+                                Уровень: {course.level}
+                            </p>
+                            <p className="pl-5 text-sm ">
+                                {course.description}
+                            </p>
+                        </li>
+                    </Link>
                 ))}
             </ul>
         </div>

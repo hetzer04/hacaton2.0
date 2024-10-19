@@ -30,7 +30,6 @@ const LessonDetail = () => {
                     value: 2,
                 }
             );
-            alert("Coins awarded successfully!"); // Feedback message
             navigate(`/courses/${courseId}/lessons/${parseInt(lessonId) + 1}`); // Redirect to the next lesson
         } catch (error) {
             console.error("Error awarding coins:", error);

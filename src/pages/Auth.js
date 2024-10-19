@@ -50,9 +50,11 @@ const Auth = () => {
                     }
                 } else {
                     setIsLogin(false);
+                    setError("Не удалось авторизоваться!");
                 }
             })
             .catch((e) => {
+                console.log(e.message);
                 setError(e.message);
             });
     }, [navigate, dispatch]);
@@ -63,14 +65,16 @@ const Auth = () => {
             style={{ wordWrap: "break-word" }}
         >
             <div className="text-3xl p-5">
-                {error ? null : isLogin ? (
-                    <p>Вы успешно зашли!</p>
-                ) : (
-                    <>
-                        <p className="text-center">Авторизация</p>
-                        <img src={LoadGif} alt="Загрузка" />
-                    </>
-                )}
+                {!error ? (
+                    isLogin ? (
+                        <p>Вы успешно зашли!</p>
+                    ) : (
+                        <>
+                            <p className="text-center">Авторизация</p>
+                            <img src={LoadGif} alt="Загрузка" />
+                        </>
+                    )
+                ) : null}
             </div>
             <div className="text-4xl text-red-500 p-5">{error}</div>
         </div>

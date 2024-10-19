@@ -1,4 +1,3 @@
-// src/pages/Courses.js
 import React, { useEffect, useState } from "react";
 import { getCourses } from "../api"; // Не забудьте реализовать API
 import { Link } from "react-router-dom";
@@ -7,10 +6,16 @@ const Courses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
+        // Если есть реальный API, замените код на вызов getCourses() и обновление состояния
         const fetchCourses = async () => {
-            const response = await getCourses();
-            setCourses(response.data);
+            // Эмуляция данных
+            const courseList = Array.from({ length: 15 }, (_, index) => ({
+                id: index + 1,
+                title: `Course ${index + 1}`,
+            }));
+            setCourses(courseList);
         };
+
         fetchCourses();
     }, []);
 

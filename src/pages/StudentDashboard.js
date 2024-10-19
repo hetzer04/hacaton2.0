@@ -12,7 +12,6 @@ const Dashboard = () => {
         // Проверяем, есть ли пользователь
         if (user && user.telegram_id) {
             const url = `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`;
-            console.log("Запрос на URL:", url); // Логируем URL запроса
 
             // Выполните запрос на получение данных о коинов с использованием Axios
             axios
@@ -48,7 +47,7 @@ const Dashboard = () => {
                     </h2>
                     <p>
                         Ваш баланс коинов:{" "}
-                        {coins !== null ? coins : "Загрузка..."}
+                        {coins ? coins : "Загрузка..."}
                     </p>
                 </div>
             )}

@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getCourses } from "../api"; // Не забудьте реализовать API
 import { Link } from "react-router-dom";
+import courseData from "../courses.json"; // Путь к файлу JSON
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        // Если есть реальный API, замените код на вызов getCourses() и обновление состояния
-        const fetchCourses = async () => {
-            // Эмуляция данных
-            const courseList = Array.from({ length: 15 }, (_, index) => ({
-                id: index + 1,
-                title: `Course ${index + 1}`,
-            }));
-            setCourses(courseList);
-        };
-
-        fetchCourses();
+        setCourses(courseData); // Установка данных из JSON
     }, []);
 
     return (
@@ -24,13 +14,17 @@ const Courses = () => {
             <h2 className="text-3xl mb-4">Курсы</h2>
             <ul>
                 {courses.map((course) => (
-                    <li key={course.id} className="mb-2">
+                    <li key={course.id} className="mb-4">
                         <Link
                             to={`/courses/${course.id}`}
-                            className="text-blue-500 hover:underline"
+                            className="text-blue-500 hover:underline text-xl"
                         >
                             {course.title}
                         </Link>
+                        <p className="text-sm text-gray-600">ID: {course.id}</p>
+                        <p className="text-sm text-gray-600">Author: {course.author}</p>
+                        <p className="text-sm text-gray-600">Level: {course.level}</p>
+                        <p className="text-sm text-gray-600">{course.description}</p>
                     </li>
                 ))}
             </ul>

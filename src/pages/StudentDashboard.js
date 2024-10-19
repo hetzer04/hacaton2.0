@@ -37,15 +37,15 @@ const Dashboard = () => {
     }, [user, dispatch]);
 
     return (
-        <div>
-            <h1>Дашборд</h1>
+        <div className="p-5 flex flex-col justify-center gap-5">
+            <h1 className="text-xl">Дашборд</h1>
             {user && (
                 <div>
-                    <h2>
+                    <h2 className="text-2xl">
                         Добро пожаловать, {user.first_name} {user.last_name}!
                         Ваш id {user.telegram_id}
                     </h2>
-                    <p>
+                    <p className="text-xl">
                         Ваш баланс коинов:{" "}
                         {coins ? coins : "Загрузка..."}
                     </p>

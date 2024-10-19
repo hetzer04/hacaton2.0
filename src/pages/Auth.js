@@ -1,14 +1,15 @@
+// Auth.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setAuth } from "../store/authSlice"; // Это если у вас есть редьюсер для управления состоянием
+import { setAuth } from "../store/authSlice"; // Your reducer for managing auth state
 import LoadGif from "../load.gif";
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [error, setError] = useState();
     const navigate = useNavigate();
-    const dispatch = useDispatch(); // Для сохранения авторизации и роли в Redux
+    const dispatch = useDispatch(); // For saving auth data and role in Redux
 
     useEffect(() => {
         const tgApp = window.Telegram.WebApp;
@@ -24,7 +25,7 @@ const Auth = () => {
         dataCheckString = dataCheckString.slice(0, -1);
         let dataUrl = [dataCheckString, hash];
 
-        // Отправка данных на сервер для авторизации
+        // Send data to server for authorization
         fetch("https://54cc-95-141-140-117.ngrok-free.app/api/telegram/auth", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -35,12 +36,16 @@ const Auth = () => {
                 if (data.success) {
                     setIsLogin(true);
 
-                    // Установим авторизационные данные в Redux (или другую систему состояния)
+                    // Set auth data in Redux, including user data
                     dispatch(
-                        setAuth({ isAuthenticated: true, role: data.user.role })
+                        setAuth({
+                            isAuthenticated: true,
+                            role: data.user.role,
+                            user: data.user, // Add user object here
+                        })
                     );
 
-                    // Перенаправление в зависимости от роли
+                    // Redirect based on role
                     if (data.user.role === "student") {
                         navigate("/student-dashboard");
                     } else if (data.user.role === "teacher") {

@@ -1,35 +1,59 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setCoins } from "../store/authSlice"; // Импортируйте ваше действие setCoins
-import axios from "axios";
+import React from "react";
 
-const Dashboard = () => {
-    useEffect(() => {
-        const url = `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`;
-        console.log("Запрос на URL:", url); // Логируем URL запроса
+const products = [
+    {
+        id: 1,
+        title: "Product 1",
+        description: "This is a description for Product 1.",
+        price: "$19.99",
+        imageUrl: "https://via.placeholder.com/300x400.png?text=Product+1" // Замените на реальные URL картинок
+    },
+    {
+        id: 2,
+        title: "Product 2",
+        description: "This is a description for Product 2.",
+        price: "$29.99",
+        imageUrl: "https://via.placeholder.com/300x400.png?text=Product+2"
+    },
+    {
+        id: 3,
+        title: "Product 3",
+        description: "This is a description for Product 3.",
+        price: "$39.99",
+        imageUrl: "https://via.placeholder.com/300x400.png?text=Product+3"
+    }
+];
 
-        // Выполните запрос на получение данных о коинов с использованием Axios
-        axios
-            .get(url, {
-                headers: { "Content-Type": "application/json" },
-            })
-            .then((response) => {
-                console.log("Ответ от сервера:", response.data); // Логируем ответ от сервера
-                // Если данные получены, сохраняем их в Redux
-                if (response.data) {
-                    dispatch(setCoins(response.data.value));
-                }
-            })
-            .catch((error) => {
-                console.error("Ошибка при получении данных о коинов:", error);
-            });
-    }, [user, dispatch]);
-
+const ProductCard = ({ product }) => {
     return (
-        <div>
-            <h1>Магазин</h1>
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden w-72">
+            {/* Картинка товара */}
+            <img
+                src={product.imageUrl}
+                alt={product.title}
+                className="w-full h-64 object-cover"
+            />
+            {/* Описание товара */}
+            <div className="p-4">
+                <h3 className="text-xl font-semibold">{product.title}</h3>
+                <p className="mt-2">{product.description}</p>
+                <p className="text-lg font-bold mt-4">{product.price}</p>
+            </div>
         </div>
     );
 };
 
-export default Dashboard;
+const ProductsPage = () => {
+    return (
+        <div className="p-6">
+            <h2 className="text-3xl font-bold mb-6">Products</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default ProductsPage;

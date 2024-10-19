@@ -12,47 +12,40 @@ const Header = () => {
                 <>
                     <h1 className="text-3xl">Образовательный Телеграм Апп</h1>
                     <nav className="mt-2">
-                        <Link to="/" className="mr-4 hover:underline">
-                            Главная
-                        </Link>
                         <Link to="/courses" className="mr-4 hover:underline">
                             Курсы
+                        </Link>
+                        <Link to="/magazin" className="mr-4 hover:underline">
+                            Магазин
                         </Link>
                         <Link
                             to="/student-dashboard"
                             className="mr-4 hover:underline"
                         >
-                            Панель управления
+                            Профиль
                         </Link>
                     </nav>
                 </>
-            )  : null}
-            {
-                role === "admin" ?(
-                    <>
-                        <h1 className="text-3xl">
-                            Образовательный Телеграм Апп
-                        </h1>
-                        <nav className="mt-2">
-                            <Link to="/" className="mr-4 hover:underline">
-                                Главная
-                            </Link>
-                            <Link
-                                to="/courses"
-                                className="mr-4 hover:underline"
-                            >
-                                Курсы
-                            </Link>
-                            <Link
-                                to="/admin-dashboard"
-                                className="mr-4 hover:underline"
-                            >
-                                Панель управления
-                            </Link>
-                        </nav>
-                    </>
-                ) : null
-            }
+            ) : null}
+            {role === "admin" ? (
+                <>
+                    <h1 className="text-3xl">Образовательный Телеграм Апп</h1>
+                    <nav className="mt-2">
+                        <Link to="/courses" className="mr-4 hover:underline">
+                            Курсы
+                        </Link>
+                        <Link to="/magazin" className="mr-4 hover:underline">
+                            Магазин
+                        </Link>
+                        <Link
+                            to="/admin-dashboard"
+                            className="mr-4 hover:underline"
+                        >
+                            Профиль
+                        </Link>
+                    </nav>
+                </>
+            ) : null}
         </header>
     );
 };

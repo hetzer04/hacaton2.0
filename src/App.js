@@ -16,6 +16,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
 import { useTelegramTheme } from "./hooks/useTelegramTheme";
+import Market from "./pages/Market";
 
 const AppWithHeader = () => {
     const themeParams = useTelegramTheme();
@@ -49,6 +50,7 @@ const AppWithHeader = () => {
                     element={<TeacherDashboard />}
                 />
                 <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                <Route path="/magazin" element={<Market />} />
 
                 <Route
                     path="/"

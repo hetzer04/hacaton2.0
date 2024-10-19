@@ -31,7 +31,7 @@ const StudentDashboard = () => {
             {user && (
                 <div>
                     <h2>Welcome, {user.first_name} {user.last_name}!</h2>
-                    <p>Your coin balance: {coins !== null ? coins : "Loading..."}</p>
+                    <p>Your coin balance: {coins ? coins : "Loading..."}</p>
                 </div>
             )}
         </div>

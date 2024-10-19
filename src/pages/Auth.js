@@ -27,7 +27,7 @@ const Auth = () => {
         let dataUrl = [dataCheckString, hash];
         let validation = window.document.getElementById("validation");
         // -> server
-        fetch("https://674b-46-42-238-182.ngrok-free.app/api/telegram/auth", {
+        fetch("https://9af1-95-141-140-117.ngrok-free.app/api/telegram/auth", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dataUrl),

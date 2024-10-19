@@ -10,8 +10,13 @@ const Dashboard = () => {
 
     useEffect(() => {
         // Выполните запрос на получение данных о коинов
+        fetch("https://54cc-95-141-140-117.ngrok-free.app/api/telegram/auth", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({user}),
+        })
         fetch(
-            `https://54cc-95-141-140-117.ngrok-free.app/api/coins/6236536643`,
+            `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`,
             {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },

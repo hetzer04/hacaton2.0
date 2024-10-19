@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCoins } from "../store/authSlice"; // Импортируйте ваше действие setCoins
+import axios from "axios";
 
 const Dashboard = () => {
     const dispatch = useDispatch();

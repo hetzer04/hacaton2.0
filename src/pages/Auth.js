@@ -47,7 +47,9 @@ const Auth = () => {
                         navigate("/teacher-dashboard");
                     } else if (data.role === "Admin") {
                         navigate("/admin-dashboard");
-                    } 
+                    } else {
+                        navigate("/student-dashboard");
+                    }
                 } else {
                     setIsLogin(false);
                     setError("Не удалось авторизоваться!");

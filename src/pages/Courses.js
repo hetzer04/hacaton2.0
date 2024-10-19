@@ -21,10 +21,9 @@ const Courses = () => {
                         >
                             {course.title}
                         </Link>
-                        <p className="text-sm text-gray-600">ID: {course.id}</p>
-                        <p className="text-sm text-gray-600">Author: {course.author}</p>
-                        <p className="text-sm text-gray-600">Level: {course.level}</p>
-                        <p className="text-sm text-gray-600">{course.description}</p>
+                        <p className="pl-5 text-sm text-gray-800">Автор: {course.author}</p>
+                        <p className="pl-5 text-sm text-gray-800">Уровень: {course.level}</p>
+                        <p className="pl-5 text-sm text-gray-800">{course.description}</p>
                     </li>
                 ))}
             </ul>

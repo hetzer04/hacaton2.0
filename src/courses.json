@@ -1,107 +1,23 @@
 [
     {
         "id": 1,
-        "title": "Course 1",
-        "description": "This is the description for Course 1",
-        "author": "Author 1",
+        "title": "Математика",
+        "description": "Базовый курс математики 5 класс",
+        "author": "Наталья Н",
         "level": "Beginner"
     },
     {
         "id": 2,
-        "title": "Course 2",
-        "description": "This is the description for Course 2",
-        "author": "Author 2",
+        "title": "Информатика",
+        "description": "Базовый курс информатики 7 класс",
+        "author": "Наталья Н",
         "level": "Intermediate"
     },
     {
         "id": 3,
-        "title": "Course 3",
-        "description": "This is the description for Course 3",
-        "author": "Author 3",
-        "level": "Advanced"
-    },
-    {
-        "id": 4,
-        "title": "Course 4",
-        "description": "This is the description for Course 4",
-        "author": "Author 4",
-        "level": "Beginner"
-    },
-    {
-        "id": 5,
-        "title": "Course 5",
-        "description": "This is the description for Course 5",
-        "author": "Author 5",
-        "level": "Intermediate"
-    },
-    {
-        "id": 6,
-        "title": "Course 6",
-        "description": "This is the description for Course 6",
-        "author": "Author 6",
-        "level": "Advanced"
-    },
-    {
-        "id": 7,
-        "title": "Course 7",
-        "description": "This is the description for Course 7",
-        "author": "Author 7",
-        "level": "Beginner"
-    },
-    {
-        "id": 8,
-        "title": "Course 8",
-        "description": "This is the description for Course 8",
-        "author": "Author 8",
-        "level": "Intermediate"
-    },
-    {
-        "id": 9,
-        "title": "Course 9",
-        "description": "This is the description for Course 9",
-        "author": "Author 9",
-        "level": "Advanced"
-    },
-    {
-        "id": 10,
-        "title": "Course 10",
-        "description": "This is the description for Course 10",
-        "author": "Author 10",
-        "level": "Beginner"
-    },
-    {
-        "id": 11,
-        "title": "Course 11",
-        "description": "This is the description for Course 11",
-        "author": "Author 11",
-        "level": "Intermediate"
-    },
-    {
-        "id": 12,
-        "title": "Course 12",
-        "description": "This is the description for Course 12",
-        "author": "Author 12",
-        "level": "Advanced"
-    },
-    {
-        "id": 13,
-        "title": "Course 13",
-        "description": "This is the description for Course 13",
-        "author": "Author 13",
-        "level": "Beginner"
-    },
-    {
-        "id": 14,
-        "title": "Course 14",
-        "description": "This is the description for Course 14",
-        "author": "Author 14",
-        "level": "Intermediate"
-    },
-    {
-        "id": 15,
-        "title": "Course 15",
-        "description": "This is the description for Course 15",
-        "author": "Author 15",
+        "title": "Английский",
+        "description": "Базовый курс англиского 7 класс",
+        "author": "Наталья Н",
         "level": "Advanced"
     }
 ]

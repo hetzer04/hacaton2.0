@@ -16,7 +16,7 @@ const Dashboard = () => {
 
             // Выполните запрос на получение данных о коинов с использованием Axios
             axios
-                .get(url, {
+                .post(url, {
                     headers: { "Content-Type": "application/json" },
                 })
                 .then((response) => {

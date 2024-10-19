@@ -1,41 +1,46 @@
-// Dashboard.js (for example)
+// Dashboard.js (например)
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCoins } from "../store/authSlice"; // Import your setCoins action
+import { setCoins } from "../store/authSlice"; // Импортируйте ваше действие setCoins
 
-const StudentDashboard = () => {
+const Dashboard = () => {
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth.user); // Get user info from Redux
-    const coins = useSelector((state) => state.auth.coins); // Get coins from Redux
+    const user = useSelector((state) => state.auth.user); // Получите информацию о пользователе из Redux
+    const coins = useSelector((state) => state.auth.coins); // Получите коин из Redux
 
     useEffect(() => {
         if (user) {
-            // Fetch coin data from the API
+            // Выполните запрос на получение данных о коинов
             fetch(`https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`)
-                .then((response) => response.json())
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Ошибка сети, не удалось получить данные.");
+                    }
+                    return response.json();
+                })
                 .then((data) => {
                     if (data) {
-                        // Dispatch the coins data to Redux
-                        dispatch(setCoins(data.value)); // Store the coins value
+                        // Отправьте данные о коинов в Redux
+                        dispatch(setCoins(data.value)); // Сохраните значение коинов
                     }
                 })
                 .catch((error) => {
-                    console.error("Error fetching coin data:", error);
+                    console.error("Ошибка при получении данных о коинов:", error);
                 });
         }
     }, [user, dispatch]);
 
     return (
         <div>
-            <h1>Dashboard</h1>
+            <h1>Дашборд</h1>
             {user && (
                 <div>
-                    <h2>Welcome, {user.first_name} {user.last_name}!</h2>
-                    <p>Your coin balance: {coins ? coins : "Loading..."}</p>
+                    <h2>Добро пожаловать, {user.first_name} {user.last_name}!</h2>
+                    <p>Ваш баланс коинов: {coins !== null ? coins : "Загрузка..."}</p>
                 </div>
             )}
         </div>
     );
 };
 
-export default StudentDashboard;
+export default Dashboard;

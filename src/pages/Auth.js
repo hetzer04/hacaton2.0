@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../store/authSlice"; // Это если у вас есть редьюсер для управления состоянием
+import LoadGif from "../load.gif";
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(false);
@@ -24,7 +25,7 @@ const Auth = () => {
         let dataUrl = [dataCheckString, hash];
 
         // Отправка данных на сервер для авторизации
-        fetch("https://9af1-95-141-140-117.ngrok-free.app/api/telegram/auth", {
+        fetch("https://54cc-95-141-140-117.ngrok-free.app/api/telegram/auth", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dataUrl),
@@ -62,7 +63,16 @@ const Auth = () => {
             style={{ wordWrap: "break-word" }}
         >
             <div className="text-3xl p-5">
-                {isLogin ? <p>Вы успешно зашли!</p> : <p>Авторизация</p>}
+                {!error ? (
+                    isLogin ? (
+                        <p>Вы успешно зашли!</p>
+                    ) : (
+                        <>
+                            <p className="text-center">Авторизация</p>
+                            <img src={LoadGif} alt="Загрузка" />
+                        </>
+                    )
+                ) : null}
             </div>
             <div className="text-4xl text-red-500 p-5">{error}</div>
         </div>

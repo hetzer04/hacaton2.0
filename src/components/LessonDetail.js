@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 import { getAssignmentsByLessonId } from "../api"; // Make sure to implement the API
-import { useSelector } from "react-redux"; // Import useSelector for accessing the redux state
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios"; // Import axios for making HTTP requests
 
 const LessonDetail = () => {
     const { lessonId, courseId } = useParams(); // Assuming courseId is part of the URL
     const [assignments, setAssignments] = useState([]);
-    const user = useSelector((state) => state.auth.user); // Get telegram_id from redux state
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
     const navigate = useNavigate(); // Use useNavigate for redirection
 
     useEffect(() => {
@@ -25,15 +26,17 @@ const LessonDetail = () => {
             await axios.post(
                 "https://54cc-95-141-140-117.ngrok-free.app/api/coins",
                 {
-                    "telegram_id": user.telegramId,
-                    "value": 2,
+                    telegram_id: user.telegram_id,
+                    value: 2,
                 }
             );
             alert("Coins awarded successfully!"); // Feedback message
             navigate(`/courses/${courseId}/lessons/${parseInt(lessonId) + 1}`); // Redirect to the next lesson
         } catch (error) {
             console.error("Error awarding coins:", error);
-            alert(`Failed to award coins. Please try again.  ${user.telegramId}`); // Error feedback
+            alert(
+                `Failed to award coins. Please try again.  ${user.telegramId}`
+            ); // Error feedback
         }
     };
 

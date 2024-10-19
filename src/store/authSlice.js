@@ -1,26 +1,25 @@
-// src/store/authSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+// store/authSlice.js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+    isAuthenticated: false,
+    role: null,
+};
 
 const authSlice = createSlice({
-    name: 'auth',
-    initialState: {
-        user: null,
-        isAuthenticated: false,
-        role: null, // роль пользователя
-    },
+    name: "auth",
+    initialState,
     reducers: {
-        login(state, action) {
-            state.user = action.payload.user;
-            state.role = action.payload.role; // Сохраняем роль пользователя
-            state.isAuthenticated = true; // Устанавливаем флаг авторизации
+        setAuth: (state, action) => {
+            state.isAuthenticated = action.payload.isAuthenticated;
+            state.role = action.payload.role;
         },
-        logout(state) {
-            state.user = null;
-            state.role = null;
+        logout: (state) => {
             state.isAuthenticated = false;
+            state.role = null;
         },
     },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { setAuth, logout } = authSlice.actions;
 export default authSlice.reducer;

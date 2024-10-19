@@ -1,10 +1,9 @@
-// src/App.js
-import React from "react";
 import {
     BrowserRouter as Router,
     Route,
     Routes,
     useLocation,
+    Navigate,
 } from "react-router-dom";
 import Header from "./components/Header";
 import Courses from "./pages/Courses";
@@ -16,12 +15,12 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
-import { useTelegramTheme } from "./hucks/useTelegramTheme";
+import { useTelegramTheme } from "./hooks/useTelegramTheme";
 
 const AppWithHeader = () => {
     const themeParams = useTelegramTheme();
     const location = useLocation();
-    const { role, isAuthenticated } = useSelector((state) => state.auth); // Получаем данные о роли и авторизации
+    const { role, isAuthenticated } = useSelector((state) => state.auth);
     const noHeaderPaths = ["/login", "/register"];
 
     return (
@@ -42,12 +41,28 @@ const AppWithHeader = () => {
                 <Route path="/login" element={<Auth />} />
 
                 <Route
+                    path="/student-dashboard"
+                    element={<StudentDashboard />}
+                />
+                <Route
+                    path="/teacher-dashboard"
+                    element={<TeacherDashboard />}
+                />
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
+                <Route
                     path="/"
                     element={
                         <ProtectedRoute>
-                            {role === "Student" && <StudentDashboard />}
-                            {role === "Teacher" && <TeacherDashboard />}
-                            {role === "Admin" && <AdminDashboard />}
+                            {role === "Student" && (
+                                <Navigate to="/student-dashboard" />
+                            )}
+                            {role === "Teacher" && (
+                                <Navigate to="/teacher-dashboard" />
+                            )}
+                            {role === "Admin" && (
+                                <Navigate to="/admin-dashboard" />
+                            )}
                         </ProtectedRoute>
                     }
                 />

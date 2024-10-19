@@ -1,34 +1,52 @@
-// src/pages/Auth.js
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../store/authSlice"; // Это если у вас есть редьюсер для управления состоянием
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [error, setError] = useState();
+    const navigate = useNavigate();
+    const dispatch = useDispatch(); // Для сохранения авторизации и роли в Redux
 
     useEffect(() => {
         const tgApp = window.Telegram.WebApp;
         const urlParams = new URLSearchParams(tgApp.initData);
-        // hash
         const hash = urlParams.get("hash");
         urlParams.delete("hash");
-        // sort a->z
         urlParams.sort();
+
         let dataCheckString = "";
         for (const [key, value] of urlParams.entries()) {
             dataCheckString += key + "=" + value + "\n";
         }
         dataCheckString = dataCheckString.slice(0, -1);
         let dataUrl = [dataCheckString, hash];
-        // -> server
+
+        // Отправка данных на сервер для авторизации
         fetch("https://9af1-95-141-140-117.ngrok-free.app/api/telegram/auth", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dataUrl),
-        }) // server ->
+        })
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
                     setIsLogin(true);
+
+                    // Установим авторизационные данные в Redux (или другую систему состояния)
+                    dispatch(
+                        setAuth({ isAuthenticated: true, role: data.role })
+                    );
+
+                    // Перенаправление в зависимости от роли
+                    if (data.role === "Student") {
+                        navigate("/student-dashboard");
+                    } else if (data.role === "Teacher") {
+                        navigate("/teacher-dashboard");
+                    } else if (data.role === "Admin") {
+                        navigate("/admin-dashboard");
+                    }
                 } else {
                     setIsLogin(false);
                 }
@@ -36,7 +54,7 @@ const Auth = () => {
             .catch((e) => {
                 setError(e.message);
             });
-    }, []);
+    }, [navigate, dispatch]);
 
     return (
         <div

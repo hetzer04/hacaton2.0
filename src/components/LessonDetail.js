@@ -24,7 +24,7 @@ const LessonDetail = () => {
     const handleAwardCoins = async () => {
         try {
             await axios.post(
-                "https://54cc-95-141-140-117.ngrok-free.app/api/coins",
+                "https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/coins",
                 {
                     telegram_id: user.telegram_id,
                     value: 2,

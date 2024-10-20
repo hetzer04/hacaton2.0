@@ -12,7 +12,7 @@ const Dashboard = () => {
     useEffect(() => {
         // Проверяем, есть ли пользователь
         if (user && user.telegram_id) {
-            const url = `https://54cc-95-141-140-117.ngrok-free.app/api/coins/${user.telegram_id}`;
+            const url = `https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/coins/${user.telegram_id}`;
 
             // Выполните запрос на получение данных о коинов с использованием Axios
             axios

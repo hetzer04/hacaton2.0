@@ -26,7 +26,7 @@ const Auth = () => {
         let dataUrl = [dataCheckString, hash];
 
         // Send data to server for authorization
-        fetch("https://54cc-95-141-140-117.ngrok-free.app/api/telegram/auth", {
+        fetch("https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/telegram/auth", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dataUrl),

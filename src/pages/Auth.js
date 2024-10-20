@@ -26,11 +26,10 @@ const Auth = () => {
         let dataUrl = [dataCheckString, hash];
 
         // Send data to server for authorization
-        fetch("https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/telegram/auth", {
+        fetch("http://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/telegram/auth", {
             method: "POST",
-            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*", },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(dataUrl),
-            mode: "cors",
         })
             .then((response) => response.json())
             .then((data) => {

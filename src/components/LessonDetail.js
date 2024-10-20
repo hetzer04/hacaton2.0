@@ -24,7 +24,7 @@ const LessonDetail = () => {
     const handleAwardCoins = async () => {
         try {
             await axios.post(
-                "https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/coins",
+                "/api/coins",
                 {
                     telegram_id: user.telegram_id,
                     value: 2,

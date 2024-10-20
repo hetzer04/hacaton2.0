@@ -10,7 +10,7 @@ const Market = () => {
     // Функция для получения данных с API
     const fetchProducts = async () => {
         try {
-            const response = await fetch("https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api/products", {method: "POST"});
+            const response = await fetch("/api/products", {method: "POST"});
             const data = await response.json();
             setProducts(data);
             setLoading(false); // После загрузки данных убираем спиннер

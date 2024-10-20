@@ -1,4 +1,4 @@
-# A link to the bot's Telegram `https://t.me/Learning_Assistant_App_Bot`
+# A link to the bot's Telegram https://t.me/Learning_Assistant_App_Bot
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

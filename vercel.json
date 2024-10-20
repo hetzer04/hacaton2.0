@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/api/(.*)",
-        "destination": "http://93.115.14.8/plesk-site-preview/learnbot.kz/api/$1"
+        "destination": "https://93.115.14.8/plesk-site-preview/learnbot.kz/https/93.115.14.8/api"
       }
     ]
   }
